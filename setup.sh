@@ -279,6 +279,7 @@ install_cli_tools_arch() {
         tealdeer
         git-delta
         lazygit
+        uv
     )
 
     pkg_install "${cli_packages[@]}"

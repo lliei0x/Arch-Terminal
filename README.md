@@ -84,6 +84,8 @@ cd terminal-setup
 | **[lazygit](https://github.com/jesseduffield/lazygit)** | Git 终端 UI |
 | **[fnm](https://github.com/Schniz/fnm)** | 快速 Node 版本管理器（Rust 编写） |
 | **[Zellij](https://zellij.dev)** | 现代终端复用器（可选） |
+| **[uv](https://github.com/astral-sh/uv)** | 用 Rust 实现的高性能 Python 包管理与环境工具    |
+
 
 
 ## 别名 / 缩写
@@ -151,3 +153,19 @@ set-ssh-key                 # key 不存在时列出所有可用 key
 | **自动切换** | ✅ `--use-on-cd` | ⚠️ 需要额外 hook |
 | **安装方式** | `brew install fnm` / `curl` | curl 脚本 |
 | **跨 Shell 共享** | ✅ 共用同一份 Node | ❌ 存储路径不同 |
+
+### 为什么选 uv
+
+- Rust 实现 → **极快（比 pip 快 10~100 倍）**
+- 兼容 pip CLI → **迁移成本低**
+- 内置 venv + resolver → **工具链收敛**
+
+可以把 uv 理解为一个 " 收敛工具链 "：
+
+|能力|传统工具|uv 对应|
+|---|---|---|
+|虚拟环境|venv|`uv venv`|
+|包安装|pip|`uv pip install`|
+|依赖锁定|pip-tools / poetry|`uv pip compile`|
+|临时工具执行|pipx|`uvx`|
+|Python 管理|pyenv（部分）|`uv python`|
